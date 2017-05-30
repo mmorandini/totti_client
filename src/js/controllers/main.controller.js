@@ -8,10 +8,11 @@ function MainCtrl($http) {
   const vm = this;
 
   $http
-  .get('localhost:3000/api/users')
+  .get('http://localhost:3000/users')
   .then(response => {
     vm.users = response.data;
 
     console.log(vm.users);
+    console.log(vm.users[1].posts);
   });
 }
