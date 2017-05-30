@@ -3,16 +3,20 @@ angular
 .controller('MainCtrl', MainCtrl);
 
 
-MainCtrl.$inject = ['$http'];
-function MainCtrl($http) {
+MainCtrl.$inject = ['$rootScope','CurrentUserService','$state'];
+function MainCtrl($rootScope,CurrentUserService,$state) {
   const vm = this;
-
-  $http
-  .get('http://localhost:3000/users')
-  .then(response => {
-    vm.users = response.data;
-
-    console.log(vm.users);
-    console.log(vm.users[1].posts);
+  $rootScope.$on('loggedIn', () => {
+    vm.user = CurrentUserService.currentUser;
+    // $state.go('tasksIndex'); //needs to be fixed
   });
+  vm.logout = () => {
+    CurrentUserService.removeUser();
+  };
+  $rootScope.$on('loggedOut', () => {
+    vm.user = null;
+    $state.go('login');
+  });
+
+
 }

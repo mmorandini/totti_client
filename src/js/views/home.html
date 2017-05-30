@@ -1,0 +1,14 @@
+<div ng-controller="UserIndexCtrl as vm">
+
+
+  Totti is my &lt{{2+1}}
+
+  <ul>
+    <li ng-repeat="user in vm.users">
+    {{ user.name }} {{ user.email }}
+    <ul>
+    <li ng-repeat="post in user.posts">{{post.body}}</li>
+    </ul>
+    </li>
+  </ul>
+</div>

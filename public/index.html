@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html ng-app="TottiApp">
   <head>
+    <base href="/">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
     <meta charset="utf-8">
     <title>Angular Stack Setup</title>
     <!-- inject:js -->
@@ -11,15 +13,9 @@
     <!-- endinject -->
   </head>
   <body ng-controller="MainCtrl as main">
-    Totti is my &lt{{2+1}}
-
-    <ul>
-      <li ng-repeat="user in main.users">
-      {{ user.name }} {{ user.email }}
-      <ul>
-      <li ng-repeat="post in user.posts">{{post.body}}</li>
-      </ul>
-      </li>
-    </ul>
+    <main ui-view></main>
+    <nav>
+  <a ng-click="main.logout()" ng-show="main.user" class="f6 fw4 hover-white-70 no-underline black-70 dib ml2 pv2 ph3 pointer nav-link pointer bl">Logout</a>
+    </nav>
   </body>
 </html>

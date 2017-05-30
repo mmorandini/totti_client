@@ -1,2 +1,6 @@
 angular
-  .module('TottiApp', []);
+  .module('TottiApp', [
+    'ui.router',
+    'ngResource',
+    'angular-jwt'
+  ]);
