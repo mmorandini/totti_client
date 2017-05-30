@@ -8,7 +8,16 @@
     <!-- inject:css -->
     <!-- endinject -->
   </head>
-  <body>
+  <body ng-controller="MainCtrl as main">
     Totti is my &lt{{2+1}}
+
+    <ul>
+      <li ng-repeat="user in main.users">
+      {{ user.name }} {{ user.email }}
+      <ul>
+      <li ng-repeat="post in user.posts">{{post.body}}</li>
+      </ul>
+      </li>
+    </ul>
   </body>
 </html>
